@@ -7,13 +7,13 @@ export default memo((params) => {
   return (
     <>
     {
-      params.data.ports?.input.map((handle, idx) => (
+      params.data.handles?.input.map((handle, idx) => (
         <Handle
           key={handle.portId}
           type="target"
           position="left"
           id={handle.portId}
-          style={{ background: '#555', top: `${(100 / (params.data.ports.input.length + 1) * (idx + 1))}%` }}
+          style={{ background: '#555', top: `${(100 / (params.data.handles.input.length + 1) * (idx + 1))}%` }}
           title={handle.desc}
           onConnect={(params) => console.log('handle onConnect', params)}
         />
@@ -28,13 +28,13 @@ export default memo((params) => {
         </div>
       </div>
       {
-      params.data.ports?.output.map((handle, idx) => (
+      params.data.handles?.output.map((handle, idx) => (
         <Handle
           key={handle.portId}
           type="source"
           position="right"
           id={handle.portId}
-          style={{ background: '#555', top: `${(100 / (params.data.ports.output.length + 1) * (idx + 1))}%` }}
+          style={{ background: '#555', top: `${(100 / (params.data.handles.output.length + 1) * (idx + 1))}%` }}
           title={handle.desc}
         />
       ))

@@ -76,7 +76,7 @@
     "useLimit": true,
     "steps": [{
       "stepId": "sfdsfd-aatgds-sdfsdf-sdfsddfs",
-      "resId": 10000, // Identyfikator templatki kroku schematu lub danych
+      "resId": 1000, // Identyfikator templatki kroku schematu lub danych
       "position": {
         "x": "500", // Pozycja elementu
         "y": "500" // Pozycja elementu
