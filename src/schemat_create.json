@@ -1,0 +1,162 @@
+{
+  "name": "<string>", // Nazwa schematu.
+  "desc": "<string>(optional)", // Opis schematu
+  "keywords": "<array<string>>", // Słowa kluczowe opisujące krok schematu
+  "language": "<string>", // PL
+  "resDef": {
+    "limit": "<number>(optional)", // Limit danych procesowanych, wysyłamy tylko jeśli user wprowadził własną wartość
+    "useLimit": "<boolean>", // Checkbox, Czy uwzględnić ustawione limity
+    "steps": [{ // Tabela kroków zawartych w schemacie
+      "stepId": "<string>", // Identyfikator kroku schematu. Należy zbudować na FE unikatowe ID.
+      "resId": "<number|string>", // Identyfikator templatki kroku schematu lub danych
+      "position": {
+        "x": "<number>", // Pozycja elementu
+        "y": "<number>" // Pozycja elementu
+      },
+      "limit": "<number>(optional)", // Limit danych procesowanych, wysyłamy tylko jeśli user wprowadził własną wartość
+      "ports": { // Wejściowe i wyjściowe dane dla kroku
+        "input": [{
+          "stepId": "<string>", // Identyfikator kroku schematu. Należy zbudować na FE unikatowe ID.
+          "resId": "<number|string>(optional)", // Id kroku wejścia.
+          "limit": "<number>(optional)", //
+          "useLimit": "<boolean>", // 
+          "dictionaryId": "<string>(optional)", // Id słownika. Tylko w przypadku gdy type: dictionary
+          "name": "<string>", // Nazwa portu wejściowego. Powinna być unikatowa bo będzie to id dla FE.
+        }],
+        "output": [{
+          "stepId": "<string>", // Identyfikator kroku schematu. Należy zbudować na FE unikatowe ID.
+          "resId": "<number|string>(optional)", // Id kroku wyjściowego.
+          "dictionaryId": "<string>(optional)", // Id słownika. Tylko w przypadku gdy type: dictionary
+          "name": "<string>", // Nazwa portu wyjściowego. Powinna być unikatowa bo będzie to id dla FE.
+          "temporary": "<boolean>", // Określa czy zapisywać wynik kroku w zasobach użytkownika
+        }]
+      },
+      "parametersGroup": [{ // Tabela grup parametrów dostępnych w kroku
+        "id": "<string>", // Id grupy generowane na FE
+        "pl": {
+          "name": "<string>", // Nazwa grupy, PL
+          "desc": "<string>(optional)", // Opis grupy, PL
+        },
+        "en": {
+          "name": "<string>", // Nazwa grupy, EN
+          "desc": "<string>(optional)", // Opis grupy, EN
+        },
+        "parameters": [{ // Tabela parametrów zawartych w grupie
+          "techName": "<string>", // Nazwa parametru do użycia w kodzie. Powinna być unikatowa bo będzie to id dla FE
+          "pl": {
+            "name": "<string>", // Nazwa parametru, PL
+            "desc": "<string>(optional)", // Opis parametru, PL
+            "value": "<string|boolean|array<string>>", // Wartości parametru PL
+            "validationRegExp": "<string>(optional)", // RegExp walidacyjne PL
+            "dictionaryId": "<string>(optional)" // Id słownika PL. Tylko w przypadku gdy type: dictionary
+          },
+          "en": {
+            "name": "<string>", // Nazwa parametru, EN
+            "desc": "<string>(optional)", // Opis parametru, EN
+            "value": "<string|boolean|array<string>>", // Wartości parametru EN
+            "validationRegExp": "<string>(optional)", // RegExp walidacyjne EN
+            "dictionaryId": "<string>(optional)" // Id słownika EN. Tylko w przypadku gdy type: dictionary
+          },
+          "type": "<string>", // Typ parametru. Patrz: Typy parametrów kroków schematu
+          "required": "<boolean>" // Określa czy parametr jest wymagany czy nie
+        }]
+      }],
+    }]
+  }
+}
+
+
+{
+  "name": "Schemat Tomka i Huberta",
+  "desc": "Fajny schemat",
+  "keywords": ["schamaty", "inne słowa kluczowe"],
+  "language": "PL",
+  "resDef": {
+    "limit": 100,
+    "useLimit": true,
+    "steps": [{
+      "stepId": "sfdsfd-aatgds-sdfsdf-sdfsddfs",
+      "resId": 10000, // Identyfikator templatki kroku schematu lub danych
+      "position": {
+        "x": "500", // Pozycja elementu
+        "y": "500" // Pozycja elementu
+      },
+      "handle": [{
+        "left": [{
+          "source": 1,
+          "target": 4,
+          // "sourceHandle":
+          // "targetHandle":
+        }],
+        "right": [{
+          {
+            "source": 4,
+            "target": 5,
+            // "sourceHandle":
+            // "targetHandle":
+          }
+        }]
+      }],
+      // "limit": "<number>(optional)", // Limit danych procesowanych, wysyłamy tylko jeśli user wprowadził własną wartość
+      "ports": { // Wejściowe i wyjściowe dane dla kroku
+        "input": [{
+          "stepId": "sfdsfd-aatgds-sdfsdf-sdfsddfs-uuid", // Identyfikator kroku schematu. Należy zbudować na FE unikatowe ID.
+          // "portId": "sfdsfd-aatgds-sdfsdf-sdfsddfs-uuid",
+          "resId": 10, // Id kroku wejścia.
+          "limit": 50, //
+          "useLimit": true, // 
+          // "type": "table",
+          // "dictionaryId": "<string>(optional)", // Id słownika. Tylko w przypadku gdy type: dictionary
+          "name": "In", // Nazwa portu wejściowego.
+          "type": "input",
+          "position": {
+            "x": "0", // Pozycja elementu
+            "y": "0" // Pozycja elementu
+          },
+          "source": 1,
+          "target": 4,
+          // "sourceHandle":
+          // "targetHandle":
+        }],
+        "output": [{
+          "stepId": "<string>", // Identyfikator kroku schematu. Należy zbudować na FE unikatowe ID.
+          "resId": "<number|string>(optional)", // Id kroku wyjściowego.
+          "dictionaryId": "<string>(optional)", // Id słownika. Tylko w przypadku gdy type: dictionary
+          "name": "<string>", // Nazwa portu wyjściowego. Powinna być unikatowa bo będzie to id dla FE.
+          "temporary": "<boolean>", // Określa czy zapisywać wynik kroku w zasobach użytkownika
+        }]
+      },
+      "parametersGroup": [{ // Tabela grup parametrów dostępnych w kroku
+        "id": "<string>", // Id grupy generowane na FE
+        "pl": {
+          "name": "<string>", // Nazwa grupy, PL
+          "desc": "<string>(optional)", // Opis grupy, PL
+        },
+        "en": {
+          "name": "<string>", // Nazwa grupy, EN
+          "desc": "<string>(optional)", // Opis grupy, EN
+        },
+        "parameters": [{ // Tabela parametrów zawartych w grupie
+          "techName": "<string>", // Nazwa parametru do użycia w kodzie. Powinna być unikatowa bo będzie to id dla FE
+          "pl": {
+            "name": "<string>", // Nazwa parametru, PL
+            "desc": "<string>(optional)", // Opis parametru, PL
+            "value": "<string|boolean|array<string>>", // Wartości parametru PL
+            "validationRegExp": "<string>(optional)", // RegExp walidacyjne PL
+            "dictionaryId": "<string>(optional)" // Id słownika PL. Tylko w przypadku gdy type: dictionary
+          },
+          "en": {
+            "name": "<string>", // Nazwa parametru, EN
+            "desc": "<string>(optional)", // Opis parametru, EN
+            "value": "<string|boolean|array<string>>", // Wartości parametru EN
+            "validationRegExp": "<string>(optional)", // RegExp walidacyjne EN
+            "dictionaryId": "<string>(optional)" // Id słownika EN. Tylko w przypadku gdy type: dictionary
+          },
+          "type": "<string>", // Typ parametru. Patrz: Typy parametrów kroków schematu
+          "required": "<boolean>" // Określa czy parametr jest wymagany czy nie
+        }]
+      }],
+    }]
+  }
+}
+
