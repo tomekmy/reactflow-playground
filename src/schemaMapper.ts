@@ -12,20 +12,9 @@ const schemaMapper = (schemaData) => {
         padding: 10
       }, // hardcoded
       data: {
-        label: `Item ${index}`,
+        label: step.name,
         resId: step.resId,
-        handles: { // hardcoded. Should be from resId
-          input: [{
-            portId: 'input_1',
-            desc: 'Opis portu wejściowego QB1',
-            type: ["table", 'dictionary']
-          }],
-          output: [{
-            portId: 'output_1',
-            desc: "Opis portu wyjściowego QB1",
-            type: ["table"]
-          }], 
-        },
+        handles: step.handles
       }
     });
 
@@ -35,19 +24,8 @@ const schemaMapper = (schemaData) => {
         data: {
           resId: input.resId || null,
           dictionaryId: input.dictionaryId || null,
-          label: `Item ${index}`,
-          handles: { // hardcoded. Should be from resId
-            input: [{
-              portId: 'input_1',
-              desc: 'Opis portu wejściowego QB1',
-              type: ["table", 'dictionary']
-            }],
-            output: [{
-              portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
-              type: ["table"]
-            }], 
-          },
+          label: input.name,
+          handles: input.handles,
         },
         type: 'selectorNode', // hardcoded. Should be from resId
         position: input.position,
@@ -63,21 +41,10 @@ const schemaMapper = (schemaData) => {
         id: output.stepId,
         data: {
           resId: output.resId || null,
-          label: `Item ${index}`,
-          handles: { // hardcoded. Should be from resId
-            input: [{
-              portId: 'input_1',
-              desc: 'Opis portu wejściowego QB1',
-              type: ["table", 'dictionary']
-            }],
-            output: [{
-              portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
-              type: ["table"]
-            }], 
-          },
+          label: output.name,
+          handles: output.handles,
         },
-        type: 'selectorNode', // hardcoded. Should be from resId
+        type: 'selectorNode', // hardcoded. Should be from resId and depends on type
         position: output.position,
         style: {
           border: '1px solid #777',
@@ -91,6 +58,8 @@ const schemaMapper = (schemaData) => {
         id: `connect_${connection.sourceId}-${connection.targetId}`,
         source: connection.sourceId,
         target: connection.targetId,
+        sourceHandle: connection.sourceHandle,
+        targetHandle: connection.targetHandle,
         style: { stroke: '#fff' } // hardcoded
       }
     ));
