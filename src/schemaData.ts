@@ -10,6 +10,8 @@ const schemaData = {
       stepId: '4',
       resId: 1000,
       process: true,
+      saveOutputData: true, // Checkbox - Zachowaj w zasobach
+      resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Query Builder', // hardcoded. Should be from resId and name
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
@@ -95,7 +97,7 @@ const schemaData = {
             input: [{
               portId: 'input_1',
               desc: 'Opis portu wejściowego QB1',
-              type: ["table"]
+              type: ["schemaStep"]
             }],
             output: [{
               portId: 'output_1',
@@ -138,6 +140,8 @@ const schemaData = {
       stepId: '6',
       resId: 2000,
       process: true,
+      saveOutputData: false, // Checkbox - Zachowaj w zasobach
+      resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator B', // hardcoded. Should be from resId and name
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
@@ -161,13 +165,27 @@ const schemaData = {
           stepId: '7',
           resId: null,
           dictionaryId: null,
+          outputData: { // dane tymczasowe
+            columns:[{
+              name: 'Kolumna 1',
+              type: 'string'
+            },
+            {
+              name: 'Kolumna 2',
+              type: 'number'
+            },
+            {
+              name: 'Kolumna 3',
+              type: 'date'
+            }]
+          },
           limit: 100,
           name: 'Wynik 2', // hardcoded. Should be from resId and name
           handles: { // hardcoded. Should be from resId and depends on type
             input: [{
               portId: 'input_1',
               desc: 'Opis portu wejściowego 1',
-              type: ["table"]
+              type: ["schemaStep"]
             }],
             output: [{
               portId: 'output_1',
@@ -200,6 +218,8 @@ const schemaData = {
       stepId: '8',
       resId: 3000,
       process: true,
+      saveOutputData: true, // Checkbox - Zachowaj w zasobach
+      resultData: true, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator B', // hardcoded. Should be from resId and name
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
@@ -229,7 +249,7 @@ const schemaData = {
             input: [{
               portId: 'input_1',
               desc: 'Opis portu wejściowego 1',
-              type: ["table"]
+              type: ["schemaStep"]
             }],
             output: [{
               portId: 'output_1',
@@ -290,7 +310,7 @@ const schemaData = {
             input: [{
               portId: 'input_1',
               desc: 'Opis portu wejściowego 1',
-              type: ["table"]
+              type: ["schemaStep"]
             }],
             output: [], 
           },
@@ -324,6 +344,8 @@ const schemaData = {
       stepId: '14',
       resId: 4000,
       process: true,
+      saveOutputData: true, // Checkbox - Zachowaj w zasobach
+      resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator C', // hardcoded. Should be from resId and name
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
@@ -392,10 +414,14 @@ const schemaData = {
           limit: 100,
           name: 'Wynik 5', // hardcoded. Should be from dictionaryId and name
           handles: { // hardcoded. Should be from resId and depends on type
-            input: [],
+            input: [{
+              portId: 'input_1',
+              desc: 'Opis portu wejściowego 1',
+              type: ["schemaStep"]
+            }],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
