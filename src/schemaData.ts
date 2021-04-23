@@ -1,7 +1,7 @@
 const schemaData = {
-  name: 'Schemat Tomka i Huberta',
-  desc: 'Fajny schemat',
-  keywords: ['schamaty', 'inne słowa kluczowe'],
+  name: 'Schemat przekształcenia Tomka i Huberta',
+  desc: 'Schemat testowy',
+  keywords: ['schamaty', 'schemat przekształcenia', 'test'],
   language: 'PL',
   resDef: {
     limit: 100,

@@ -67,8 +67,6 @@ const schemaMapper = (schemaData) => {
     flowSchema = [...flowSchema, ...inputData, ...outputData, ...connections];
   });
 
-  
-
   console.log('flowSchema: ', flowSchema);
 
   return flowSchema;
