@@ -142,7 +142,7 @@ const schemaData = {
       process: true,
       saveOutputData: false, // Checkbox - Zachowaj w zasobach
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
-      name: 'Kreator B', // hardcoded. Should be from resId and name
+      name: 'Kreator A', // hardcoded. Should be from resId and name
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
