@@ -40,7 +40,7 @@ const schemaData = {
             input: [],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
@@ -59,7 +59,7 @@ const schemaData = {
             input: [],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
@@ -78,7 +78,7 @@ const schemaData = {
             input: [],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
@@ -96,12 +96,12 @@ const schemaData = {
           handles: { // hardcoded. Should be from resId and depends on type
             input: [{
               portId: 'input_1',
-              desc: 'Opis portu wejściowego QB1',
+              desc: 'Opis portu wejściowego 1',
               type: ["schemaStep"]
             }],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
@@ -379,7 +379,7 @@ const schemaData = {
             input: [],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
@@ -398,7 +398,7 @@ const schemaData = {
             input: [],
             output: [{
               portId: 'output_1',
-              desc: "Opis portu wyjściowego QB1",
+              desc: "Opis portu wyjściowego 1",
               type: ["table"]
             }], 
           },
