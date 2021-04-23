@@ -2,7 +2,7 @@ const schemaMapper = (schemaData) => {
 
   let flowSchema = [];
 
-  schemaData.resDef.steps.forEach((step, index) => {
+  schemaData.resDef.steps.forEach((step) => {
     flowSchema.push({
       id: step.stepId,
       type: 'selectorNode', // hardcoded. Should be from resId
@@ -18,7 +18,7 @@ const schemaMapper = (schemaData) => {
       }
     });
 
-    const inputData = step.connectedData.input.map((input, index) => (
+    const inputData = step.connectedData.input.map((input) => (
       {
         id: input.stepId,
         data: {
@@ -36,7 +36,7 @@ const schemaMapper = (schemaData) => {
       }
     ));
 
-    const outputData = step.connectedData.output.map((output, index) => (
+    const outputData = step.connectedData.output.map((output) => (
       {
         id: output.stepId,
         data: {
