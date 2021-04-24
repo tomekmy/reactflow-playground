@@ -18,7 +18,18 @@ const schemaData = {
           portId: 'input_1',
           desc: 'Opis portu wejściowego QB1',
           type: ["table", 'dictionary']
-        }],
+        },
+        {
+          portId: 'input_2',
+          desc: 'Opis portu wejściowego QB1',
+          type: ["table", 'dictionary']
+        },
+        {
+          portId: 'input_3',
+          desc: 'Opis portu wejściowego QB1',
+          type: ["table", 'dictionary']
+        }
+      ],
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego QB1",
@@ -115,19 +126,19 @@ const schemaData = {
         sourceId: '1',
         targetId: '4',
         sourceHandle: null,
-        targetHandle: null
+        targetHandle: 'input_1'
       },
       {
         sourceId: '2',
         targetId: '4',
         sourceHandle: null,
-        targetHandle: null
+        targetHandle: 'input_2'
       },
       {
         sourceId: '3',
         targetId: '4',
         sourceHandle: null,
-        targetHandle: null
+        targetHandle: 'input_3'
       },
       {
         sourceId: '4',
@@ -136,210 +147,6 @@ const schemaData = {
         targetHandle: null
       }]
     },
-    {
-      stepId: '6',
-      resId: 2000,
-      process: true,
-      saveOutputData: false, // Checkbox - Zachowaj w zasobach
-      resultData: false, // Checkbox - Oznacz jako dane wynikowe
-      name: 'Kreator A', // hardcoded. Should be from resId and name
-      handles: { // hardcoded. Should be from resId and depends on type
-        input: [{
-          portId: 'input_1',
-          desc: 'Opis portu wejściowego 1',
-          type: ["table"]
-        }],
-        output: [{
-          portId: 'output_1',
-          desc: "Opis portu wyjściowego 1",
-          type: ["table"]
-        }], 
-      },
-      position: {
-        x: 500,
-        y: 50
-      },
-      connectedData: {
-        input: [],
-        output: [{
-          stepId: '7',
-          resId: null,
-          dictionaryId: null,
-          outputData: { // dane tymczasowe
-            columns:[{
-              name: 'Kolumna 1',
-              type: 'string'
-            },
-            {
-              name: 'Kolumna 2',
-              type: 'number'
-            },
-            {
-              name: 'Kolumna 3',
-              type: 'date'
-            }]
-          },
-          limit: 100,
-          name: 'Wynik 2', // hardcoded. Should be from resId and name
-          handles: { // hardcoded. Should be from resId and depends on type
-            input: [{
-              portId: 'input_1',
-              desc: 'Opis portu wejściowego 1',
-              type: ["schemaStep"]
-            }],
-            output: [{
-              portId: 'output_1',
-              desc: "Opis portu wyjściowego 1",
-              type: ["table"]
-            }], 
-          },
-          position: {
-            x: 600,
-            y: 50 
-          }
-        }]
-      },
-      connections: [{
-        sourceId: '5',
-        targetId: '6',
-        sourceHandle: null,
-        targetHandle: null
-      },
-      {
-        sourceId: '6',
-        targetId: '7',
-        sourceHandle: null,
-        targetHandle: null
-      }]
-    },
-
-
-    {
-      stepId: '8',
-      resId: 3000,
-      process: true,
-      saveOutputData: true, // Checkbox - Zachowaj w zasobach
-      resultData: true, // Checkbox - Oznacz jako dane wynikowe
-      name: 'Kreator B', // hardcoded. Should be from resId and name
-      handles: { // hardcoded. Should be from resId and depends on type
-        input: [{
-          portId: 'input_1',
-          desc: 'Opis portu wejściowego 1',
-          type: ["table"]
-        }],
-        output: [{
-          portId: 'output_1',
-          desc: "Opis portu wyjściowego 1",
-          type: ["table"]
-        }], 
-      },
-      position: {
-        x: 500,
-        y: 150
-      },
-      connectedData: {
-        input: [],
-        output: [{
-          stepId: '9',
-          resId: 333,
-          dictionaryId: null,
-          limit: 100,
-          name: 'Wynik 3', // hardcoded. Should be from resId and name
-          handles: { // hardcoded. Should be from resId and depends on type
-            input: [{
-              portId: 'input_1',
-              desc: 'Opis portu wejściowego 1',
-              type: ["schemaStep"]
-            }],
-            output: [{
-              portId: 'output_1',
-              desc: "Opis portu wyjściowego 1",
-              type: ["table"]
-            }], 
-          },
-          position: {
-            x: 600,
-            y: 150
-          }
-        }]
-      },
-      connections: [{
-        sourceId: '5',
-        targetId: '8',
-        sourceHandle: null,
-        targetHandle: null
-      },
-      {
-        sourceId: '8',
-        targetId: '9',
-        sourceHandle: null,
-        targetHandle: null
-      }]
-    },
-  
-    {
-      stepId: '10',
-      resId: 3000,
-      process: true,
-      name: 'Kreator B', // hardcoded. Should be from resId and name
-      handles: { // hardcoded. Should be from resId and depends on type
-        input: [{
-          portId: 'input_1',
-          desc: 'Opis portu wejściowego 1',
-          type: ["table"]
-        }],
-        output: [{
-          portId: 'output_1',
-          desc: "Opis portu wyjściowego 1",
-          type: ["table"]
-        }], 
-      },
-      position: {
-        x: 750,
-        y: 100
-      },
-      connectedData: {
-        input: [],
-        output: [{
-          stepId: '11',
-          resId: 444,
-          dictionaryId: null,
-          limit: 100,
-          name: 'Wynik 4', // hardcoded. Should be from resId and name
-          handles: { // hardcoded. Should be from resId and depends on type
-            input: [{
-              portId: 'input_1',
-              desc: 'Opis portu wejściowego 1',
-              type: ["schemaStep"]
-            }],
-            output: [], 
-          },
-          position: {
-            x: 850,
-            y: 100
-          }
-        }]
-      },
-      connections: [{
-        sourceId: '9',
-        targetId: '10',
-        sourceHandle: null,
-        targetHandle: null
-      },
-      {
-        sourceId: '7',
-        targetId: '10',
-        sourceHandle: null,
-        targetHandle: null
-      },
-      {
-        sourceId: '10',
-        targetId: '11',
-        sourceHandle: null,
-        targetHandle: null
-      }]
-    },
-  
     {
       stepId: '14',
       resId: 4000,
@@ -448,10 +255,224 @@ const schemaData = {
         targetId: '15',
         sourceHandle: null,
         targetHandle: null
+      }]
+    },
+    {
+      stepId: '6',
+      resId: 2000,
+      process: true,
+      saveOutputData: false, // Checkbox - Zachowaj w zasobach
+      resultData: false, // Checkbox - Oznacz jako dane wynikowe
+      name: 'Kreator A', // hardcoded. Should be from resId and name
+      handles: { // hardcoded. Should be from resId and depends on type
+        input: [{
+          portId: 'input_1',
+          desc: 'Opis portu wejściowego 1',
+          type: ["table"]
+        }],
+        output: [{
+          portId: 'output_1',
+          desc: "Opis portu wyjściowego 1",
+          type: ["table"]
+        }], 
+      },
+      position: {
+        x: 500,
+        y: 50
+      },
+      connectedData: {
+        input: [],
+        output: [{
+          stepId: '7',
+          resId: null,
+          dictionaryId: null,
+          outputData: { // dane tymczasowe
+            columns:[{
+              name: 'Kolumna 1',
+              type: 'string'
+            },
+            {
+              name: 'Kolumna 2',
+              type: 'number'
+            },
+            {
+              name: 'Kolumna 3',
+              type: 'date'
+            }]
+          },
+          limit: 100,
+          name: 'Wynik 2', // hardcoded. Should be from resId and name
+          handles: { // hardcoded. Should be from resId and depends on type
+            input: [{
+              portId: 'input_1',
+              desc: 'Opis portu wejściowego 1',
+              type: ["schemaStep"]
+            }],
+            output: [{
+              portId: 'output_1',
+              desc: "Opis portu wyjściowego 1",
+              type: ["table"]
+            }], 
+          },
+          position: {
+            x: 600,
+            y: 50 
+          }
+        }]
+      },
+      connections: [{
+        sourceId: '5',
+        targetId: '6',
+        sourceHandle: null,
+        targetHandle: null
+      },
+      {
+        sourceId: '6',
+        targetId: '7',
+        sourceHandle: null,
+        targetHandle: null
+      }]
+    },
+
+
+    {
+      stepId: '8',
+      resId: 3000,
+      process: true,
+      saveOutputData: true, // Checkbox - Zachowaj w zasobach
+      resultData: true, // Checkbox - Oznacz jako dane wynikowe
+      name: 'Kreator B', // hardcoded. Should be from resId and name
+      handles: { // hardcoded. Should be from resId and depends on type
+        input: [{
+          portId: 'input_1',
+          desc: 'Opis portu wejściowego 1',
+          type: ["table"]
+        },
+        {
+          portId: 'input_2',
+          desc: 'Opis portu wejściowego 2',
+          type: ["table"]
+        }
+      ],
+        output: [{
+          portId: 'output_1',
+          desc: "Opis portu wyjściowego 1",
+          type: ["table"]
+        }], 
+      },
+      position: {
+        x: 500,
+        y: 150
+      },
+      connectedData: {
+        input: [],
+        output: [{
+          stepId: '9',
+          resId: 333,
+          dictionaryId: null,
+          limit: 100,
+          name: 'Wynik 3', // hardcoded. Should be from resId and name
+          handles: { // hardcoded. Should be from resId and depends on type
+            input: [{
+              portId: 'input_1',
+              desc: 'Opis portu wejściowego 1',
+              type: ["schemaStep"]
+            }],
+            output: [{
+              portId: 'output_1',
+              desc: "Opis portu wyjściowego 1",
+              type: ["table"]
+            }], 
+          },
+          position: {
+            x: 600,
+            y: 150
+          }
+        }]
+      },
+      connections: [{
+        sourceId: '5',
+        targetId: '8',
+        sourceHandle: null,
+        targetHandle: null
+      },
+      {
+        sourceId: '8',
+        targetId: '9',
+        sourceHandle: null,
+        targetHandle: null
       },
       {
         sourceId: '15',
         targetId: '8',
+        sourceHandle: null,
+        targetHandle: 'input_2'
+      }]
+    },
+  
+    {
+      stepId: '10',
+      resId: 3000,
+      process: true,
+      name: 'Kreator B', // hardcoded. Should be from resId and name
+      handles: { // hardcoded. Should be from resId and depends on type
+        input: [{
+          portId: 'input_1',
+          desc: 'Opis portu wejściowego 1',
+          type: ["table"]
+        },
+        {
+          portId: 'input_2',
+          desc: 'Opis portu wejściowego 2',
+          type: ["table"]
+        }],
+        output: [{
+          portId: 'output_1',
+          desc: "Opis portu wyjściowego 1",
+          type: ["table"]
+        }], 
+      },
+      position: {
+        x: 750,
+        y: 100
+      },
+      connectedData: {
+        input: [],
+        output: [{
+          stepId: '11',
+          resId: 444,
+          dictionaryId: null,
+          limit: 100,
+          name: 'Wynik 4', // hardcoded. Should be from resId and name
+          handles: { // hardcoded. Should be from resId and depends on type
+            input: [{
+              portId: 'input_1',
+              desc: 'Opis portu wejściowego 1',
+              type: ["schemaStep"]
+            }],
+            output: [], 
+          },
+          position: {
+            x: 850,
+            y: 100
+          }
+        }]
+      },
+      connections: [{
+        sourceId: '9',
+        targetId: '10',
+        sourceHandle: null,
+        targetHandle: 'input_2'
+      },
+      {
+        sourceId: '7',
+        targetId: '10',
+        sourceHandle: null,
+        targetHandle: 'input_1'
+      },
+      {
+        sourceId: '10',
+        targetId: '11',
         sourceHandle: null,
         targetHandle: null
       }]
