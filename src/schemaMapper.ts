@@ -3,6 +3,18 @@ const schemaMapper = (schemaData) => {
   let flowSchema = [];
 
   schemaData.resDef.steps.forEach((step) => {
+    const creatorInputHandles = step.handles.input.map((handle) => ({
+      portId: handle.portId,
+      desc: handle.desc,
+      type: handle.type
+    }));
+
+    const creatorOutputHandles = step.handles.output.map((handle) => ({
+      portId: handle.portId,
+      desc: handle.desc,
+      type: handle.type
+    }));
+
     flowSchema.push({
       id: step.stepId,
       type: 'selectorNode', // hardcoded. Should be from resId
@@ -14,57 +26,94 @@ const schemaMapper = (schemaData) => {
       data: {
         label: step.name,
         resId: step.resId,
-        handles: step.handles
+        handles: {
+          input: creatorInputHandles,
+          output: creatorOutputHandles
+        }
       }
     });
 
-    const inputData = step.connectedData.input.map((input) => (
-      {
-        id: input.stepId,
-        data: {
-          resId: input.resId || null,
-          dictionaryId: input.dictionaryId || null,
-          label: input.name,
-          handles: input.handles,
-        },
-        type: 'selectorNode', // hardcoded. Should be from resId
-        position: input.position,
-        style: {
-          border: '1px solid #777',
-          padding: 10
-        }, // hardcoded
+    const inputData = step.handles.input.map((input) => {
+      if (input.connectedData?.stepId) {
+        return {
+          id: input.connectedData.stepId,
+          data: {
+            resId: input.connectedData.resId || null,
+            dictionaryId: input.connectedData.dictionaryId || null,
+            label: input.connectedData.name,
+            handles: input.connectedData.handles,
+          },
+          type: 'selectorNode', // hardcoded. Should be from resId
+          position: input.connectedData.position,
+          style: {
+            border: '1px solid #777',
+            padding: 10
+          }, // hardcoded
+        }
+      } else {
+        return null;
       }
-    ));
+    }).filter(Boolean);
 
-    const outputData = step.connectedData.output.map((output) => (
-      {
-        id: output.stepId,
-        data: {
-          resId: output.resId || null,
-          label: output.name,
-          handles: output.handles,
-        },
-        type: 'selectorNode', // hardcoded. Should be from resId and depends on type
-        position: output.position,
-        style: {
-          border: '1px solid #777',
-          padding: 10
-        }, // hardcoded
+    const outputData = step.handles.output.map((output) => {
+      if (output.connectedData) {
+        return {
+          id: output.connectedData.stepId,
+          data: {
+            resId: output.connectedData.resId || null,
+            label: output.connectedData.name,
+            handles: output.connectedData.handles,
+          },
+          type: 'selectorNode', // hardcoded. Should be from resId and depends on type
+          position: output.connectedData.position,
+          style: {
+            border: '1px solid #777',
+            padding: 10
+          }, // hardcoded
+        };
+      } else {
+        return null;
       }
-    ));
+    }).filter(Boolean);
 
-    const connections = step.connections.map((connection) => (
-      {
-        id: `connect_${connection.sourceId}-${connection.targetId}`,
-        source: connection.sourceId,
-        target: connection.targetId,
-        sourceHandle: connection.sourceHandle,
-        targetHandle: connection.targetHandle,
-        style: { stroke: '#fff' } // hardcoded
+    const inputConnections = step.handles.input.map((handle) => {
+      if (handle.connectedData?.stepId) {
+        return {
+          id: `connect_${handle.connectedData.stepId}-${step.stepId}`,
+          source: handle.connectedData.stepId,
+          target: step.stepId,
+          sourceHandle: handle.connectedData.connectedHandle,
+          targetHandle: handle.portId,
+          style: { stroke: '#fff' } // hardcoded
+        }
+      } else {
+        return {
+          id: `connect_${handle.connectedData.resultData}-${step.stepId}`,
+          source: handle.connectedData.resultData,
+          target: step.stepId,
+          sourceHandle: handle.connectedData.connectedHandle,
+          targetHandle: handle.portId,
+          style: { stroke: '#fff' } // hardcoded
+        }
       }
-    ));
+    });
 
-    flowSchema = [...flowSchema, ...inputData, ...outputData, ...connections];
+    const outputConnections = step.handles.output.map((handle) => {
+      if (handle.connectedData) {
+        return {
+          id: `connect_${step.stepId}-${handle.connectedData.stepId}`,
+          source: step.stepId,
+          target: handle.connectedData.stepId,
+          sourceHandle: handle.portId,
+          targetHandle: handle.connectedData.connectedHandle,
+          style: { stroke: '#fff' } // hardcoded
+        };
+      } else {
+        return null;
+      }
+    }).filter(Boolean);
+
+    flowSchema = [...flowSchema, ...inputData, ...outputData, ...inputConnections, ...outputConnections];
   });
 
   console.log('flowSchema: ', flowSchema);
