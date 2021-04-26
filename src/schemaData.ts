@@ -58,6 +58,59 @@ const schemaData = {
                 type: ["table"]
               }], 
             },
+            parametersGroup: [{
+              id: 'parametersGroup-1',
+              pl: {
+                name: 'Pierwszy tab z paramatrami',
+                desc: 'Opis pierwszego taba z parametrami'
+              },
+              en: {
+                name: 'First tab with parameters',
+                desc: 'Description of first tab with parameters',
+              },
+              parameters: [{
+                techName: 'recordsNumber',
+                pl: {
+                  name: "Kolor",
+                  desc: "Parametr określający kolor",
+                  value: 'Czerwony',
+                  listValue: null,
+                  validationRegExp: null,
+                  dictionaryId: null
+                },
+                en: {
+                  name: "Color",
+                  desc: "Color parameter",
+                  value: 'Red',
+                  listValue: null,
+                  validationRegExp: null,
+                  dictionaryId: null
+                },
+                type: "string",
+                required: true
+              },
+              {
+                techName: 'carBrands',
+                pl: {
+                  name: "Marka samochodu",
+                  desc: "Parametr określający markę samochodu",
+                  value: 'BMW',
+                  listValue: null,
+                  validationRegExp: null,
+                  dictionaryId: '2563'
+                },
+                en: {
+                  name: "Car Brand",
+                  desc: "Car brand parameter",
+                  value: 'BMW',
+                  listValue: null,
+                  validationRegExp: null,
+                  dictionaryId: '2563'
+                },
+                type: "dictionary",
+                required: false
+              }]
+            }],
             position: {
               x: 100,
               y: 100
