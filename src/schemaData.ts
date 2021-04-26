@@ -168,32 +168,7 @@ const schemaData = {
             },
             position: {
               x: 375,
-              y: 70
-            }
-          }
-        },
-        {
-          portId: 'output_2',
-          desc: "Opis portu wyjściowego QB2",
-          type: ["table"],
-          connectedData: {
-            stepId: '66',
-            resId: 666,
-            dictionaryId: null,
-            limit: 100,
-            connectedHandle: 'input_1',
-            name: 'Wynik 6', // hardcoded. Should be from resId and name
-            handles: { // hardcoded. Should be from resId and depends on type
-              input: [{
-                portId: 'input_1',
-                desc: 'Opis portu wejściowego 1',
-                type: ["schemaStep"]
-              }],
-              output: [], 
-            },
-            position: {
-              x: 375,
-              y: 135
+              y: 100
             }
           }
         }], 
@@ -420,6 +395,31 @@ const schemaData = {
               y: 150
             }
           }
+        },
+        {
+          portId: 'output_2',
+          desc: "Opis portu wyjściowego 2",
+          type: ["table"],
+          connectedData: {
+            stepId: '66',
+            resId: 666,
+            dictionaryId: null,
+            limit: 100,
+            connectedHandle: 'input_1',
+            name: 'Wynik 6', // hardcoded. Should be from resId and name
+            handles: { // hardcoded. Should be from resId and depends on type
+              input: [{
+                portId: 'input_1',
+                desc: 'Opis portu wejściowego 1',
+                type: ["schemaStep"]
+              }],
+              output: [], 
+            },
+            position: {
+              x: 600,
+              y: 210
+            }
+          }
         }], 
       },
       position: {
@@ -498,7 +498,7 @@ const schemaData = {
       },
       position: {
         x: 500,
-        y: 240
+        y: 300
       },
     },
   ]}
