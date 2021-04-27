@@ -4,6 +4,26 @@ import React, { memo } from 'react';
 import { Handle } from 'react-flow-renderer';
 
 export default memo((params) => {
+const isValidInputConnection = (connection) => {
+    return true;
+    const sourcePortType = params.data.handles.input.find(handle => handle.portId === connection.targetHandle).type;
+    const targetPortType = elements.find(element => element.stepId === connection.target).type;
+  
+    console.log('sourcePortType', sourcePortType);
+    console.log('targetPortType', targetPortType);
+    return sourcePortType.find(type => type === targetPortType);    
+  };
+
+  const isValidOutputConnection = (connection) => {  
+    return true;
+    const sourcePortType = params.data.handles.output.find(handle => handle.portId === connection.sourceHandle).type;
+    const targetPortType = elements.find(element => element.stepId === connection.target).type;
+    
+    console.log('sourcePortType', sourcePortType);
+    console.log('targetPortType', targetPortType);
+    return sourcePortType.find(type => type === targetPortType);    
+  };
+
   return (
     <>
     {
@@ -16,6 +36,7 @@ export default memo((params) => {
           style={{ background: '#555', top: `${(100 / (params.data.handles.input.length + 1) * (idx + 1))}%` }}
           title={handle.desc}
           onConnect={(params) => console.log('handle onConnect', params)}
+          isValidConnection={isValidInputConnection}
         />
       ))
     }
@@ -36,6 +57,7 @@ export default memo((params) => {
           id={handle.portId}
           style={{ background: '#555', top: `${(100 / (params.data.handles.output.length + 1) * (idx + 1))}%` }}
           title={handle.desc}
+          isValidConnection={isValidOutputConnection}
         />
       ))
     }

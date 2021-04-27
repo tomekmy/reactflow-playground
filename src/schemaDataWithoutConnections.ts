@@ -7,36 +7,18 @@ const schemaDataWithoutConnections = {
     limit: 100,
     useLimit: true,
     steps: [{
-      stepId: '1',
-      resId: 10,
-      dictionaryId: null,
-      limit: 100,
-      name: 'Tabela 1', // hardcoded. Should be from resId and name
-      handles: { // hardcoded. Should be from resId and depends on type
-        input: [],
-        output: [{
-          portId: 'output_1',
-          desc: "Opis portu wyjściowego 1",
-          type: ["table"],
-        }], 
-      },
-      position: {
-        x: 100,
-        y: 50
-      }
-    },
-    {
       stepId: '2',
       resId: 20,
       dictionaryId: null,
       limit: 100,
       name: 'Tabela 2', // hardcoded. Should be from resId and name
+      type: 'table',  // hardcoded
       handles: { // hardcoded. Should be from resId and depends on type
         input: [],
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["table"]
+          type: ["queryBuilder", "schemaStep"],
         }], 
       },
       parametersGroup: [{
@@ -103,12 +85,13 @@ const schemaDataWithoutConnections = {
       dictionaryId: 30,
       limit: 100,
       name: 'Słownik 1', // hardcoded. Should be from dictionaryId and name
+      type: 'dictionary',  // hardcoded
       handles: { // hardcoded. Should be from resId and depends on type
         input: [],
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["table"]
+          type: ["queryBuilder", "schemaStep"],
         }], 
       },
       position: {
@@ -123,11 +106,32 @@ const schemaDataWithoutConnections = {
       saveOutputData: true, // Checkbox - Zachowaj w zasobach
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Query Builder', // hardcoded. Should be from resId and name
+      type: 'queryBuilder',  // hardcoded
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
           desc: 'Opis portu wejściowego QB1',
           type: ["table", 'dictionary'],
+          connectedData: {
+            stepId: '1',
+            resId: 10,
+            dictionaryId: null,
+            limit: 100,
+            name: 'Tabela 1', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded
+            handles: { // hardcoded. Should be from resId and depends on type
+              input: [],
+              output: [{
+                portId: 'output_1',
+                desc: "Opis portu wyjściowego 1",
+                type: ["queryBuilder", "schemaStep"],
+              }], 
+            },
+            position: {
+              x: 100,
+              y: 50
+            }
+          }
         },
         {
           portId: 'input_2',
@@ -150,16 +154,17 @@ const schemaDataWithoutConnections = {
             dictionaryId: null,
             limit: 100,
             name: 'Wynik 1', // hardcoded. Should be from resId and name
+            type: 'table',
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
                 desc: 'Opis portu wejściowego 1',
-                type: ["schemaStep"]
+                type: ["queryBuilder"]
               }],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep"]
               }], 
             },
             position: {
@@ -180,12 +185,13 @@ const schemaDataWithoutConnections = {
       dictionaryId: null,
       limit: 100,
       name: 'Tabela 3', // hardcoded. Should be from resId and name
+      type: 'table', // hardcoded
       handles: { // hardcoded. Should be from resId and depends on type
         input: [],
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["table"]
+          type: ["table", 'dictionary'],
         }], 
       },
       position: {
@@ -199,12 +205,13 @@ const schemaDataWithoutConnections = {
       dictionaryId: null,
       limit: 100,
       name: 'Tabela 4', // hardcoded. Should be from resId and name
+      type: 'table', // hardcoded
       handles: { // hardcoded. Should be from resId and depends on type
         input: [],
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["table"]
+          type: ["table", 'dictionary'],
         }], 
       },
       position: {
@@ -220,6 +227,7 @@ const schemaDataWithoutConnections = {
       saveOutputData: true, // Checkbox - Zachowaj w zasobach
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator C', // hardcoded. Should be from resId and name
+      type: 'schemaStep', // hardcoded.
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -248,6 +256,7 @@ const schemaDataWithoutConnections = {
       dictionaryId: null,
       limit: 100,
       name: 'Wynik 5', // hardcoded. Should be from dictionaryId and name
+      type: 'table', // hardcoded.
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -257,7 +266,7 @@ const schemaDataWithoutConnections = {
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["table"]
+          type: ["schemaStep"]
         }], 
       },
       position: {

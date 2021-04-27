@@ -17,7 +17,7 @@ const schemaMapper = (schemaData) => {
 
     flowSchema.push({
       id: step.stepId,
-      type: 'selectorNode', // hardcoded. Should be from resId
+      type: step.type,
       position: step.position,
       style: {
         border: '1px solid #777',
@@ -43,7 +43,7 @@ const schemaMapper = (schemaData) => {
             label: input.connectedData.name,
             handles: input.connectedData.handles,
           },
-          type: 'selectorNode', // hardcoded. Should be from resId
+          type: input.connectedData.type,
           position: input.connectedData.position,
           style: {
             border: '1px solid #777',
@@ -63,7 +63,7 @@ const schemaMapper = (schemaData) => {
             label: output.connectedData.name,
             handles: output.connectedData.handles,
           },
-          type: 'selectorNode', // hardcoded. Should be from resId and depends on type
+          type: output.connectedData.type,
           position: output.connectedData.position,
           style: {
             border: '1px solid #777',
@@ -114,8 +114,6 @@ const schemaMapper = (schemaData) => {
 
     flowSchema = [...flowSchema, ...inputData, ...outputData, ...inputConnections, ...outputConnections];
   });
-
-  console.log('flowSchema: ', flowSchema);
 
   return flowSchema;
 };
