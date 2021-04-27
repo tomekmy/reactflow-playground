@@ -50,9 +50,8 @@ const schemaMapper = (schemaData) => {
             padding: 10
           }, // hardcoded
         }
-      } else {
-        return null;
       }
+      return null;
     }).filter(Boolean);
 
     const outputData = step.handles.output.map((output) => {
@@ -71,9 +70,8 @@ const schemaMapper = (schemaData) => {
             padding: 10
           }, // hardcoded
         };
-      } else {
-        return null;
       }
+      return null;
     }).filter(Boolean);
 
     const inputConnections = step.handles.input.map((handle) => {
@@ -86,7 +84,8 @@ const schemaMapper = (schemaData) => {
           targetHandle: handle.portId,
           style: { stroke: '#fff' } // hardcoded
         }
-      } else {
+      }
+      if (handle.connectedData?.resultData) {
         return {
           id: `connect_${handle.connectedData.resultData}-${step.stepId}`,
           source: handle.connectedData.resultData,
@@ -96,7 +95,8 @@ const schemaMapper = (schemaData) => {
           style: { stroke: '#fff' } // hardcoded
         }
       }
-    });
+      return null;
+    }).filter(Boolean);;
 
     const outputConnections = step.handles.output.map((handle) => {
       if (handle.connectedData) {
@@ -108,9 +108,8 @@ const schemaMapper = (schemaData) => {
           targetHandle: handle.connectedData.connectedHandle,
           style: { stroke: '#fff' } // hardcoded
         };
-      } else {
-        return null;
       }
+      return null;
     }).filter(Boolean);
 
     flowSchema = [...flowSchema, ...inputData, ...outputData, ...inputConnections, ...outputConnections];
