@@ -29,8 +29,8 @@ const CustomNodeFlow = () => {
   const [elements, setElements] = useState([]);
 
   useEffect(() => {
-    // setElements(schemaMapper(schemaData));
-    setElements(schemaMapper(schemaDataWithoutConnections));
+    setElements(schemaMapper(schemaData));
+    // setElements(schemaMapper(schemaDataWithoutConnections));
     // setElements(schemaRawData);
   }, []);
 
