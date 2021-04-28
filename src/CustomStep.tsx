@@ -3,25 +3,30 @@ import React, { memo } from 'react';
 
 import { Handle } from 'react-flow-renderer';
 
+// Only for demo purposes. All elements should be taken from global store.
+import schemaDataWithoutConnections from './schemaDataWithoutConnections';
+import schemaMapper from './schemaMapper';
+const elements = schemaMapper(schemaDataWithoutConnections);
+
 export default memo((params) => {
 const isValidInputConnection = (connection) => {
-    return true;
-    const sourcePortType = params.data.handles.input.find(handle => handle.portId === connection.targetHandle).type;
-    const targetPortType = elements.find(element => element.stepId === connection.target).type;
+    // console.log('connection', connection);
+    const dataOutputPortType = elements.find(element => element.id === connection.target).type;
+    const creatorInputPortTypes = elements.find(element => element.id === connection.source).data.handles.output.find(handle => handle.portId === connection.sourceHandle).type;
   
-    console.log('sourcePortType', sourcePortType);
-    console.log('targetPortType', targetPortType);
-    return sourcePortType.find(type => type === targetPortType);    
+    // console.log('dataOutputPortType', dataOutputPortType);
+    // console.log('creatorInputPortTypes', creatorInputPortTypes);
+    return creatorInputPortTypes.find(type => type === dataOutputPortType);    
   };
 
   const isValidOutputConnection = (connection) => {  
-    return true;
-    const sourcePortType = params.data.handles.output.find(handle => handle.portId === connection.sourceHandle).type;
-    const targetPortType = elements.find(element => element.stepId === connection.target).type;
-    
-    console.log('sourcePortType', sourcePortType);
-    console.log('targetPortType', targetPortType);
-    return sourcePortType.find(type => type === targetPortType);    
+    // console.log('connection', connection);
+    const dataOutputPortType = elements.find(element => element.id === connection.source).type;
+    const creatorInputPortTypes = elements.find(element => element.id === connection.target).data.handles.input.find(handle => handle.portId === connection.targetHandle).type;
+  
+    // console.log('dataOutputPortType', dataOutputPortType);
+    // console.log('creatorInputPortTypes', creatorInputPortTypes);
+    return creatorInputPortTypes.find(type => type === dataOutputPortType);    
   };
 
   return (
