@@ -8,7 +8,6 @@ import ReactFlow, {
 
 import CustomStep from './CustomStep';
 import schemaData from './schemaData';
-import schemaDataWithoutConnections from './schemaDataWithoutConnections';
 import schemaRawData from './schemaRawData';
 import schemaMapper from './schemaMapper';
 
@@ -33,8 +32,7 @@ const CustomNodeFlow = () => {
   const [elements, setElements] = useState([]);
 
   useEffect(() => {
-    // setElements(schemaMapper(schemaData));
-    setElements(schemaMapper(schemaDataWithoutConnections));
+    setElements(schemaMapper(schemaData));
     // setElements(schemaRawData);
   }, []);
 

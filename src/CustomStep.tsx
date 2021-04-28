@@ -4,9 +4,9 @@ import React, { memo } from 'react';
 import { Handle } from 'react-flow-renderer';
 
 // Only for demo purposes. All elements should be taken from global store.
-import schemaDataWithoutConnections from './schemaDataWithoutConnections';
+import schemaData from './schemaData';
 import schemaMapper from './schemaMapper';
-const elements = schemaMapper(schemaDataWithoutConnections);
+const elements = schemaMapper(schemaData);
 
 export default memo((params) => {
 const isValidInputConnection = (connection) => {

@@ -13,6 +13,7 @@ const schemaData = {
       saveOutputData: true, // Checkbox - Zachowaj w zasobach
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Query Builder', // hardcoded. Should be from resId and name
+      type: 'queryBuilder', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -25,12 +26,13 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'output_1',
             name: 'Tabela 1', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -50,12 +52,13 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'output_1',
             name: 'Tabela 2', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             parametersGroup: [{
@@ -128,12 +131,13 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'output_1',
             name: 'Słownik 1', // hardcoded. Should be from dictionaryId and name
+            type: 'dictionary', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -154,16 +158,17 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'input_1',
             name: 'Wynik 1', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
                 desc: 'Opis portu wejściowego 1',
-                type: ["schemaStep"]
+                type: ["schemaStep", "queryBuilder"]
               }],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -186,6 +191,7 @@ const schemaData = {
       saveOutputData: true, // Checkbox - Zachowaj w zasobach
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator C', // hardcoded. Should be from resId and name
+      type: 'schemaStep', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -198,12 +204,13 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'output_1',
             name: 'Tabela 3', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -223,12 +230,13 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'output_1',
             name: 'Tabela 4', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -248,16 +256,17 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'input_1',
             name: 'Wynik 5', // hardcoded. Should be from dictionaryId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
                 desc: 'Opis portu wejściowego 1',
-                type: ["schemaStep"]
+                type: ["schemaStep", "queryBuilder"]
               }],
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -280,6 +289,7 @@ const schemaData = {
       saveOutputData: false, // Checkbox - Zachowaj w zasobach
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator A', // hardcoded. Should be from resId and name
+      type: 'schemaStep', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -314,6 +324,7 @@ const schemaData = {
             },
             limit: 100,
             name: 'Wynik 2', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
@@ -323,7 +334,7 @@ const schemaData = {
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -347,6 +358,7 @@ const schemaData = {
       saveOutputData: true, // Checkbox - Zachowaj w zasobach
       resultData: true, // Checkbox - Oznacz jako dane wynikowe
       name: 'Kreator B', // hardcoded. Should be from resId and name
+      type: 'schemaStep', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -378,6 +390,7 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'input_1',
             name: 'Wynik 3', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
@@ -387,7 +400,7 @@ const schemaData = {
               output: [{
                 portId: 'output_1',
                 desc: "Opis portu wyjściowego 1",
-                type: ["table"]
+                type: ["schemaStep", "queryBuilder"]
               }], 
             },
             position: {
@@ -407,6 +420,7 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'input_1',
             name: 'Wynik 6', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
@@ -433,6 +447,7 @@ const schemaData = {
       resId: 3000,
       process: true,
       name: 'Kreator B', // hardcoded. Should be from resId and name
+      type: 'schemaStep', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -463,6 +478,7 @@ const schemaData = {
             limit: 100,
             connectedHandle: 'input_1',
             name: 'Wynik 4', // hardcoded. Should be from resId and name
+            type: 'table', // hardcoded. Should be from Resource Manager
             handles: { // hardcoded. Should be from resId and depends on type
               input: [{
                 portId: 'input_1',
@@ -488,6 +504,7 @@ const schemaData = {
       stepId: '77',
       resId: 80,
       name: 'Tabela bez połączenia', // hardcoded. Should be from resId and name
+      type: 'table', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [],
         output: [{
