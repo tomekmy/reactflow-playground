@@ -13,10 +13,14 @@ const isValidInputConnection = (connection) => {
     // console.log('connection', connection);
     const dataOutputPortType = elements.find(element => element.id === connection.target).type;
     const creatorInputPortTypes = elements.find(element => element.id === connection.source).data.handles.output.find(handle => handle.portId === connection.sourceHandle).type;
+
+    const inputConnections = elements.filter(element => element.target === connection.target && element.targetHandle === connection.targetHandle);
+
+    // console.log('inputConnections: ', inputConnections);
   
     // console.log('dataOutputPortType', dataOutputPortType);
     // console.log('creatorInputPortTypes', creatorInputPortTypes);
-    return creatorInputPortTypes.find(type => type === dataOutputPortType);    
+    return creatorInputPortTypes.find(type => type === dataOutputPortType) && inputConnections.length < 2;    
   };
 
   const isValidOutputConnection = (connection) => {  
