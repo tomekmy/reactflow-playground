@@ -510,7 +510,7 @@ const schemaData = {
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["table"],
+          type: ["schemaStep"],
         }], 
       },
       position: {
