@@ -22,6 +22,10 @@ const bgColor = '#1A192B';
 const connectionLineStyle = { stroke: '#fff' };
 const nodeTypes = {
   selectorNode: CustomStep,
+  table: CustomStep,
+  dictionary: CustomStep,
+  queryBuilder: CustomStep,
+  schemaStep: CustomStep
 };
 
 const CustomNodeFlow = () => {
@@ -37,6 +41,7 @@ const CustomNodeFlow = () => {
   useEffect(() => {
     if (reactflowInstance && elements.length > 0) {
       reactflowInstance.fitView();
+      console.log('elements', elements);
     }
   }, [reactflowInstance, elements.length]);
 
@@ -47,8 +52,9 @@ const CustomNodeFlow = () => {
   );
   const onConnect = useCallback(
     (params) =>
-      setElements((els) =>
-        addEdge({ ...params,  style: { stroke: '#fff' } }, els)
+      setElements((els) => {
+        return addEdge({ ...params,  style: { stroke: '#fff' } }, els)
+      }
       ),
     []
   );

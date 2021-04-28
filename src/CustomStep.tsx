@@ -3,7 +3,32 @@ import React, { memo } from 'react';
 
 import { Handle } from 'react-flow-renderer';
 
+// Only for demo purposes. All elements should be taken from global store.
+import schemaDataWithoutConnections from './schemaDataWithoutConnections';
+import schemaMapper from './schemaMapper';
+const elements = schemaMapper(schemaDataWithoutConnections);
+
 export default memo((params) => {
+const isValidInputConnection = (connection) => {
+    // console.log('connection', connection);
+    const dataOutputPortType = elements.find(element => element.id === connection.target).type;
+    const creatorInputPortTypes = elements.find(element => element.id === connection.source).data.handles.output.find(handle => handle.portId === connection.sourceHandle).type;
+  
+    // console.log('dataOutputPortType', dataOutputPortType);
+    // console.log('creatorInputPortTypes', creatorInputPortTypes);
+    return creatorInputPortTypes.find(type => type === dataOutputPortType);    
+  };
+
+  const isValidOutputConnection = (connection) => {  
+    // console.log('connection', connection);
+    const dataOutputPortType = elements.find(element => element.id === connection.source).type;
+    const creatorInputPortTypes = elements.find(element => element.id === connection.target).data.handles.input.find(handle => handle.portId === connection.targetHandle).type;
+  
+    // console.log('dataOutputPortType', dataOutputPortType);
+    // console.log('creatorInputPortTypes', creatorInputPortTypes);
+    return creatorInputPortTypes.find(type => type === dataOutputPortType);    
+  };
+
   return (
     <>
     {
@@ -16,6 +41,7 @@ export default memo((params) => {
           style={{ background: '#555', top: `${(100 / (params.data.handles.input.length + 1) * (idx + 1))}%` }}
           title={handle.desc}
           onConnect={(params) => console.log('handle onConnect', params)}
+          isValidConnection={isValidInputConnection}
         />
       ))
     }
@@ -36,6 +62,7 @@ export default memo((params) => {
           id={handle.portId}
           style={{ background: '#555', top: `${(100 / (params.data.handles.output.length + 1) * (idx + 1))}%` }}
           title={handle.desc}
+          isValidConnection={isValidOutputConnection}
         />
       ))
     }

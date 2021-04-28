@@ -67,7 +67,11 @@ header select {
   color: #f8f8f8;
 }
 
-.react-flow__node-selectorNode {
+.react-flow__node-selectorNode,
+.react-flow__node-table,
+.react-flow__node-dictionary,
+.react-flow__node-queryBuilder,
+.react-flow__node-schemaStep {
   font-size: 12px;
   background: #f0f2f3;
   border: 1px solid 555;
@@ -75,7 +79,11 @@ header select {
   text-align: center;
 }
 
-.react-flow__node-selectorNode .react-flow__handle {
+.react-flow__node-selectorNode .react-flow__handle,
+.react-flow__node-table .react-flow__handle,
+.react-flow__node-dictionary .react-flow__handle,
+.react-flow__node-queryBuilder .react-flow__handle,
+.react-flow__node-schemaStep .react-flow__handle {
   border-color: #f0f2f3;
 }
 
