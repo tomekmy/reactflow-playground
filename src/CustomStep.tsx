@@ -16,21 +16,25 @@ const isValidInputConnection = (connection) => {
 
     const inputConnections = elements.filter(element => element.target === connection.target && element.targetHandle === connection.targetHandle);
 
-    // console.log('inputConnections: ', inputConnections);
+    // console.log('inputConnections: ', inputConnections.length);
   
     // console.log('dataOutputPortType', dataOutputPortType);
     // console.log('creatorInputPortTypes', creatorInputPortTypes);
-    return creatorInputPortTypes.find(type => type === dataOutputPortType) && inputConnections.length < 2;    
+    return creatorInputPortTypes.find(type => type === dataOutputPortType) && !inputConnections.length;    
   };
 
   const isValidOutputConnection = (connection) => {  
     // console.log('connection', connection);
     const dataOutputPortType = elements.find(element => element.id === connection.source).type;
     const creatorInputPortTypes = elements.find(element => element.id === connection.target).data.handles.input.find(handle => handle.portId === connection.targetHandle).type;
+
+    const inputConnections = elements.filter(element => element.target === connection.target && element.targetHandle === connection.targetHandle);
+
+    // console.log('inputConnections', inputConnections.length);
   
     // console.log('dataOutputPortType', dataOutputPortType);
     // console.log('creatorInputPortTypes', creatorInputPortTypes);
-    return creatorInputPortTypes.find(type => type === dataOutputPortType);    
+    return creatorInputPortTypes.find(type => type === dataOutputPortType) && !inputConnections.length;    
   };
 
   return (

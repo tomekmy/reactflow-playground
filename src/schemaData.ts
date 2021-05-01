@@ -14,6 +14,59 @@ const schemaData = {
       resultData: false, // Checkbox - Oznacz jako dane wynikowe
       name: 'Query Builder', // hardcoded. Should be from resId and name
       type: 'queryBuilder', // hardcoded. Should be from Resource Manager
+      parametersGroup: [{
+        id: 'parametersGroup-1',
+        pl: {
+          name: 'Pierwszy tab z paramatrami',
+          desc: 'Opis pierwszego taba z parametrami'
+        },
+        en: {
+          name: 'First tab with parameters',
+          desc: 'Description of first tab with parameters',
+        },
+        parameters: [{
+          techName: 'recordsNumber',
+          pl: {
+            name: "Kolor",
+            desc: "Parametr określający kolor",
+            value: 'Czerwony',
+            listValue: null,
+            validationRegExp: null,
+            dictionaryId: null
+          },
+          en: {
+            name: "Color",
+            desc: "Color parameter",
+            value: 'Red',
+            listValue: null,
+            validationRegExp: null,
+            dictionaryId: null
+          },
+          type: "string",
+          required: true
+        },
+        {
+          techName: 'carBrands',
+          pl: {
+            name: "Marka samochodu",
+            desc: "Parametr określający markę samochodu",
+            value: 'BMW',
+            listValue: null,
+            validationRegExp: null,
+            dictionaryId: '2563'
+          },
+          en: {
+            name: "Car Brand",
+            desc: "Car brand parameter",
+            value: 'BMW',
+            listValue: null,
+            validationRegExp: null,
+            dictionaryId: '2563'
+          },
+          type: "dictionary",
+          required: false
+        }]
+      }],
       handles: { // hardcoded. Should be from resId and depends on type
         input: [{
           portId: 'input_1',
@@ -45,59 +98,6 @@ const schemaData = {
           portId: 'input_2',
           desc: 'Opis portu wejściowego QB1',
           type: ["table", 'dictionary'],
-          parametersGroup: [{
-            id: 'parametersGroup-1',
-            pl: {
-              name: 'Pierwszy tab z paramatrami',
-              desc: 'Opis pierwszego taba z parametrami'
-            },
-            en: {
-              name: 'First tab with parameters',
-              desc: 'Description of first tab with parameters',
-            },
-            parameters: [{
-              techName: 'recordsNumber',
-              pl: {
-                name: "Kolor",
-                desc: "Parametr określający kolor",
-                value: 'Czerwony',
-                listValue: null,
-                validationRegExp: null,
-                dictionaryId: null
-              },
-              en: {
-                name: "Color",
-                desc: "Color parameter",
-                value: 'Red',
-                listValue: null,
-                validationRegExp: null,
-                dictionaryId: null
-              },
-              type: "string",
-              required: true
-            },
-            {
-              techName: 'carBrands',
-              pl: {
-                name: "Marka samochodu",
-                desc: "Parametr określający markę samochodu",
-                value: 'BMW',
-                listValue: null,
-                validationRegExp: null,
-                dictionaryId: '2563'
-              },
-              en: {
-                name: "Car Brand",
-                desc: "Car brand parameter",
-                value: 'BMW',
-                listValue: null,
-                validationRegExp: null,
-                dictionaryId: '2563'
-              },
-              type: "dictionary",
-              required: false
-            }]
-          }],
           connectedData: {
             stepId: '2',
             resId: 20,
@@ -123,28 +123,7 @@ const schemaData = {
         {
           portId: 'input_3',
           desc: 'Opis portu wejściowego QB1',
-          type: ["table", 'dictionary'],
-          connectedData: {
-            stepId: '3',
-            resId: null,
-            dictionaryId: 30,
-            limit: 100,
-            connectedHandle: 'output_1',
-            name: 'Słownik 1', // hardcoded. Should be from dictionaryId and name
-            type: 'dictionary', // hardcoded. Should be from Resource Manager
-            handles: { // hardcoded. Should be from resId and depends on type
-              input: [],
-              output: [{
-                portId: 'output_1',
-                desc: "Opis portu wyjściowego 1",
-                type: ["schemaStep", "queryBuilder"]
-              }], 
-            },
-            position: {
-              x: 100,
-              y: 150
-            }
-          }
+          type: ["table", 'dictionary']
         }
       ],
         output: [{
@@ -499,24 +478,26 @@ const schemaData = {
         y: 100
       },
     },
-
     {
-      stepId: '77',
-      resId: 80,
-      name: 'Tabela bez połączenia', // hardcoded. Should be from resId and name
-      type: 'table', // hardcoded. Should be from Resource Manager
+      stepId: '3',
+      resId: null,
+      dictionaryId: 30,
+      limit: 100,
+      connectedHandle: 'output_1',
+      name: 'Słownik 1', // hardcoded. Should be from dictionaryId and name
+      type: 'dictionary', // hardcoded. Should be from Resource Manager
       handles: { // hardcoded. Should be from resId and depends on type
         input: [],
         output: [{
           portId: 'output_1',
           desc: "Opis portu wyjściowego 1",
-          type: ["schemaStep"],
+          type: ["schemaStep", "queryBuilder"]
         }], 
       },
       position: {
-        x: 500,
-        y: 300
-      },
+        x: 100,
+        y: 150
+      }
     },
   ]}
 };
