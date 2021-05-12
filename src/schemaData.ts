@@ -275,7 +275,7 @@ const schemaData = {
           desc: 'Opis portu wejściowego 1',
           type: ["table"],
           connectedData: {
-            resultData: '5',
+            existingId: '5',
             connectedHandle: 'input_1',
           }
         }],
@@ -344,7 +344,7 @@ const schemaData = {
           desc: 'Opis portu wejściowego 1',
           type: ["table"],
           connectedData: {
-            resultData: '5',
+            existingId: '5',
             connectedHandle: 'input_1',
           }
         },
@@ -353,7 +353,7 @@ const schemaData = {
           desc: 'Opis portu wejściowego 2',
           type: ["table"],
           connectedData: {
-            resultData: '15',
+            existingId: '15',
             connectedHandle: 'input_2',
           }
         }
@@ -433,7 +433,7 @@ const schemaData = {
           desc: 'Opis portu wejściowego 1',
           type: ["table"],
           connectedData: {
-            resultData: '7',
+            existingId: '7',
             connectedHandle: 'input_1',
           }
         },
@@ -442,7 +442,7 @@ const schemaData = {
           desc: 'Opis portu wejściowego 2',
           type: ["table"],
           connectedData: {
-            resultData: '9',
+            existingId: '9',
             connectedHandle: 'input_2',
           }
         }],

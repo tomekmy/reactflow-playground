@@ -85,10 +85,10 @@ const schemaMapper = (schemaData) => {
           style: { stroke: '#fff' } // hardcoded
         }
       }
-      if (handle.connectedData?.resultData) {
+      if (handle.connectedData?.existingId) {
         return {
-          id: `connect_${handle.connectedData.resultData}-${step.stepId}`,
-          source: handle.connectedData.resultData,
+          id: `connect_${handle.connectedData.existingId}-${step.stepId}`,
+          source: handle.connectedData.existingId,
           target: step.stepId,
           sourceHandle: handle.connectedData.connectedHandle,
           targetHandle: handle.portId,
